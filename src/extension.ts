@@ -62,8 +62,38 @@ async function createPostStub() : Promise<any> {
 	await vscode.window.showTextDocument(doc);
 }
 
+async function renameThis() : Promise<any> {
+	let thisFile = vscode.window.activeTextEditor?.document.uri;
+	if (!thisFile) {
+		vscode.window.showInformationMessage('No file :-(');
+		return;
+	}
+
+	let editor = vscode.window.activeTextEditor!;
+
+	await editor.document.save();
+	let newPath = await vscode.window.showInputBox({
+		title: "New File Name",
+		value: thisFile.path,
+		valueSelection: [
+			thisFile.path.lastIndexOf('/') + 1,
+			thisFile.path.lastIndexOf('.')
+		]
+	});
+
+	if (!newPath || newPath === thisFile.path) {
+		return;
+	}
+
+	let newFile = vscode.Uri.from({ scheme: thisFile.scheme, path: newPath });
+	await vscode.workspace.fs.rename(thisFile, newFile, { overwrite: false });
+	let doc = await vscode.workspace.openTextDocument(newFile);
+	await vscode.window.showTextDocument(doc);
+}
+
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('yokogakix.createPostStub', createPostStub));
+	context.subscriptions.push(vscode.commands.registerCommand('yokogakix.renameThis', renameThis));
 }
 
 export function deactivate() {}

@@ -18,6 +18,10 @@
 			{
 				"command": "yokogakix.createPostStub",
 				"title": "New Post"
+			},
+			{
+				"command": "yokogakix.renameThis",
+				"title": "Rename Current File"
 			}
 		]
 	},
