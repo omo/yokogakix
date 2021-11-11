@@ -1,4 +1,6 @@
 # yokogakix README
 
-This is the README for your extension "yokogakix".
-Leave me alone. This is intended for private uses.
+Leave me alone. This vscode extension is intended for private uses.
+
+ * createPostStub - Create a Hugo post stub, named "untiled.md".
+ * renameThis: Rename the file of the active editor.
