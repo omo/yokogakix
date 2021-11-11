@@ -1,8 +1,9 @@
 {
-  "name": "yoogakix",
+  "name": "yokogakix",
 	"displayName": "YokogakiX",
 	"description": "Morrita's private catch-all extension for writing.",
-	"version": "0.0.1",
+	"repository": "https://github.com/omo/yokogakix",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.60.0"
 	},

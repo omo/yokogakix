@@ -51,7 +51,7 @@ async function createPostStub() : Promise<any> {
 	let y = toZeroPaddedString(now.getFullYear(), 4);
 	let m = toZeroPaddedString(now.getMonth() + 1, 2);
 	let d = toZeroPaddedString(now.getDate(), 2);
-	let dir = vscode.Uri.joinPath(root, `post/${y}/${m}`);
+	let dir = vscode.Uri.joinPath(root, `content/post/${y}/${m}`);
 	let file = await createUntitled(dir, createFrontMatter(y, m, d)); 
 	if (!file) {
 		vscode.window.showInformationMessage('Cannot create new post :-(');
